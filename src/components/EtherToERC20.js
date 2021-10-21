@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Button, Form, FormControl,InputGroup } from 'react-bootstrap';
-import TestERC20 from '../abis/TestERC20.json';
 import Web3 from 'web3';
 import { ethers } from 'ethers';
 
@@ -29,14 +28,20 @@ class EtherToERC20 extends Component {
     }
 
     async rent(){
+
         const interval = setInterval(() => {
             this.setState({
-                currentTime : Date()
+                currentTime : Date(),
+                
             })
         }, 1000);
 
+        this.setState({
+            label       : 'start to rent token...'
+        })
+
         if(this.state.renterAddress == ''||this.state.rentRoomNumber == ''||this.state.rentAmount == ''||this.state.rentTime == ''){
-            alert("please check input data")    
+            alert("Please check input data")    
             return 
         } else {
             let tx = {
@@ -83,7 +88,10 @@ class EtherToERC20 extends Component {
             const promise = await web3.eth.accounts.signTransaction(tx, ownerPrivateKey)
             await web3.eth.sendSignedTransaction(promise.rawTransaction).once('confirmation', async() => {
 
-                alert("token is expiryd successfully")
+                alert("The token is expiried successfully")
+                this.setState({
+                    label : "The token is expiried successfully"
+                })
             })
         }, rentTime * 1000);
     }
@@ -122,9 +130,8 @@ class EtherToERC20 extends Component {
         return (
             <div>
                 <br/><br/>
-                <h2>Rent LOT TOKEN BY ETH</h2>
+                <h2>Rent LOT TOKEN For Room</h2>
                 <Form><br/><br/>
-
                 <h6>{this.state.currentTime}</h6>
 
                     <InputGroup className="mb-3">

@@ -10,6 +10,7 @@ import {
 class App extends Component {
     async componentWillMount() {
         await this.loadWeb3();
+        
     }
 
     async loadWeb3() {

@@ -5,9 +5,8 @@ import {
     Route,
 } from "react-router-dom";
 import EtherToERC20 from './EtherToERC20.js';
-import ERC20ToERC20 from './ERC20ToERC20.js';
 import Help         from './Help.js'
-// import Erc20 from './Erc20.js';
+
 
 class Main extends Component {
     render() {
@@ -18,9 +17,6 @@ class Main extends Component {
                         <Route path="/ethertoerc20">
                             <EtherToERC20 />
                         </Route>
-                        {/* <Route path="/erc20toerc20">
-                            <ERC20ToERC20 />
-                        </Route> */}
                         <Route path="/Help">
                             <Help/>
                         </Route>
