@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap';
-import NavLink from 'react-bootstrap/NavLink';
+import {Container, Navbar, Nav} from 'react-bootstrap';
+
 class TopNav extends Component {
     render () {
         return (
@@ -10,7 +10,7 @@ class TopNav extends Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/ethertoerc20">LOT token rent</Nav.Link>
+                            <Nav.Link href="/ethertoerc20">CTO token rent</Nav.Link>
                             <Nav.Link href="/erc20toerc20"></Nav.Link>
                         </Nav>
                         <Nav>

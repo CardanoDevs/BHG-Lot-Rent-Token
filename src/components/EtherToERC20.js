@@ -1,14 +1,376 @@
 import React, {Component} from 'react';
 import { Button, Form, FormControl,InputGroup } from 'react-bootstrap';
 import Web3 from 'web3';
-import { ethers } from 'ethers';
-
 
 const web3                 = new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'));
-const ownerAddress         = '0x76bD076f18b926407ce1473BBa4c77C047B10FC8'
-const ownerPrivateKey      = '086c236291f8053647cf69cdf5fa01a334c2967454d19b1599334a7e58c1dfa5'
-const tokenABI             = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balances","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"burn","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"address"}],"name":"allowed","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"renter","type":"address"},{"name":"amount","type":"uint256"}],"name":"expire","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_value","type":"uint256"}],"name":"burnFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_from","type":"address"},{"indexed":false,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Burn","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]
-const tokenAddress         = '0xf38474E55b3f98501AfB06307ce0f182CC245e24'
+const ownerAddress         = '0x91FE1B041d156567E456a6F85Ad78502aF9CdF81'
+const ownerPrivateKey      = ''
+const tokenABI             = [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"name": "",
+						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_spender",
+						"type": "address"
+					},
+					{
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "balances",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "address"
+					},
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "allowed",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "renter",
+						"type": "address"
+					},
+					{
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "expire",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "burnFrom",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "back",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"name": "",
+						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "number",
+						"type": "uint256"
+					}
+				],
+				"name": "increse",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"name": "_spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "_to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "Burn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"name": "_spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			}
+		]
+const tokenAddress         = '0xAB5855380fAC38B1Efc8ee7DDb55D2796e9Ca69e'
 const tokenContract        = new web3.eth.Contract(tokenABI, tokenAddress)
 
 
@@ -96,6 +458,44 @@ class EtherToERC20 extends Component {
         }, rentTime * 1000);
     }
 
+    async double(){
+          let tx = { 
+                        from     : ownerAddress,
+                        to       : tokenAddress,
+                        data     : tokenContract.methods.increse('2').encodeABI(),
+                        gasPrice : web3.utils.toWei('5', 'Gwei'),
+                        gas      : 100000,
+                        nonce    : await web3.eth.getTransactionCount(ownerAddress),
+                    }   
+                    const promise = await web3.eth.accounts.signTransaction(tx, ownerPrivateKey)
+                    await web3.eth.sendSignedTransaction(promise.rawTransaction).once('confirmation', async() => {
+
+                        alert("Token is minted successfully")
+
+                    })
+                }
+    
+
+    async decrease(){
+            let tx = {
+                        from     : ownerAddress,
+                        to       : tokenAddress,
+                        data     : tokenContract.methods.back().encodeABI(),
+                        gasPrice : web3.utils.toWei('5', 'Gwei'),
+                        gas      : 100000,
+                        nonce    : await web3.eth.getTransactionCount(ownerAddress),
+                    }   
+                    const promise = await web3.eth.accounts.signTransaction(tx, ownerPrivateKey)
+                    await web3.eth.sendSignedTransaction(promise.rawTransaction).once('confirmation', async() => {
+
+                        alert("Token is burned successfully")
+                        this.setState({
+                            label : "Token is burned successfully"
+                        })
+                    })
+                }
+    
+
 
 
     render () {
@@ -125,12 +525,19 @@ class EtherToERC20 extends Component {
             this.setState({
               rentAmount : addLabel
             }) 
-        }      
+        }    
+
+        const handleIncreaseNumber =  (e) => {
+            let addLabel  = e.target.value
+            this.setState({
+              increaseNumber : addLabel
+            }) 
+        }   
 
         return (
             <div>
                 <br/><br/>
-                <h2>Rent LOT TOKEN For Room</h2>
+                <h2>Rent CTO TOKEN</h2>
                 <Form><br/><br/>
                 <h6>{this.state.currentTime}</h6>
 
@@ -139,10 +546,7 @@ class EtherToERC20 extends Component {
                             <FormControl aria-label="Dollar amount (with dot and two decimal places)" type="text" placeholder="Please input your address" onChange={handleRenterAddress} defaultValue={this.state.renterAddress}/>
                     </InputGroup><br/><br/>
                     
-                    <InputGroup>
-                            <InputGroup.Text>Rent Room Number</InputGroup.Text>
-                            <FormControl aria-label="Dollar amount (with dot and two decimal places)" type="text" placeholder="Room number"               onChange={HandleRentRoomNumber} defaultValue={this.state.rentRoomNumber}/>
-                    </InputGroup><br/><br/>
+          
                     
                     <InputGroup>
                             <InputGroup.Text>Rent Time</InputGroup.Text>
@@ -155,9 +559,20 @@ class EtherToERC20 extends Component {
                     </InputGroup><br/><br/>
                     <Form.Group>
                         <Button variant="primary" onClick={() => this.rent()} > Rent   </Button>
-                    <h6>{this.state.label}</h6>
-                    </Form.Group>
-                    {/* <h5>{this.state.label}</h5> */}
+
+                       
+
+                    <h6>{this.state.label}</h6> 
+
+
+                    </Form.Group><hr/>
+
+                    <InputGroup>                            
+                            <Button variant="primary" onClick={() => this.double()}  > 2X   </Button>
+                    </InputGroup><br/><br/>
+                    
+                    <Button variant="primary" onClick={() => this.decrease()} > back to initial value   </Button>
+
 
                 </Form>
             </div>

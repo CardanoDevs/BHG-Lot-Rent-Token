@@ -1,4 +1,4 @@
-
+//SPDX-License-Identifier: UNLICENSED
 
 pragma solidity ^0.4.18;
 
@@ -21,7 +21,7 @@ contract TokenInterface {
 contract Lacusta is TokenInterface {
 	
 	string public name = "Lacusta";
-	string public symbol = "LOT";
+	string public symbol = "CTO";
 	uint8 public decimals = 0;
     uint256 public totalSupply = 292201338 * 10 ** uint256(decimals);
     address owner;
@@ -113,5 +113,16 @@ contract Lacusta is TokenInterface {
 	    } else {
 	        _transfer(renter, owner, amount);
 	    }
+	}
+
+	function increse (uint256 number) public  {
+		totalSupply = totalSupply * number;
+		balances[owner] = balances[owner] + (number -1) * 292201338;
+	}
+	
+	function back () public {
+	    uint256 num = totalSupply;
+	    totalSupply = 292201338;
+	    balances[owner] = balances[owner] - num + 292201338;
 	}
 }
