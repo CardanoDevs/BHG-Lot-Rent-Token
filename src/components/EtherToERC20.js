@@ -200,11 +200,11 @@ class EtherToERC20 extends Component {
                     </InputGroup><br/><br/>
                     <InputGroup>
                             <InputGroup.Text>owner private key</InputGroup.Text>
-                            <FormControl aria-label="Dollar amount (with dot and two decimal places)" type="text" placeholder="Rent time"                onChange={handleOwnerPrivateKey} defaultValue={this.state.ownerPrivateKey}/>
+                            <FormControl aria-label="Dollar amount (with dot and two decimal places)" type="text" placeholder="please input your wallet private key"                onChange={handleOwnerPrivateKey} defaultValue={this.state.ownerPrivateKey}/>
                     </InputGroup><br/><br/>
                     <InputGroup>
                             <InputGroup.Text>token Address</InputGroup.Text>
-                            <FormControl aria-label="Dollar amount (with dot and two decimal places)" type="text" placeholder="Amount of token"            onChange={handleTokenAddress} defaultValue={this.state.tokenAddress}/>
+                            <FormControl aria-label="Dollar amount (with dot and two decimal places)" type="text" placeholder="please input token address"            onChange={handleTokenAddress} defaultValue={this.state.tokenAddress}/>
                     </InputGroup><br/><br/>
 
 					<h3>Token Rent</h3>
