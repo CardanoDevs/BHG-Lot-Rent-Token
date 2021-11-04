@@ -3,15 +3,7 @@ import { Button, Form, FormControl,InputGroup } from 'react-bootstrap';
 import Web3 from 'web3';
 import {tokenABI} from './config' 
 
-
 const web3                 = new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'));
-// const ownerAddress         = '0x91FE1B041d156567E456a6F85Ad78502aF9CdF81'
-// const ownerPrivateKey      = ''
-
-// const tokenAddress         = '0xAB5855380fAC38B1Efc8ee7DDb55D2796e9Ca69e'
-
-
-
 class EtherToERC20 extends Component {
     constructor(props) {
         super(props)
@@ -139,9 +131,6 @@ class EtherToERC20 extends Component {
                     })
     }
     
-
-
-
     render () {
         const handleRenterAddress =  (e) => {
             let addLabel  = e.target.value
@@ -233,6 +222,4 @@ class EtherToERC20 extends Component {
         );
 
     }
-}
-
-export default EtherToERC20;
+}export default EtherToERC20;

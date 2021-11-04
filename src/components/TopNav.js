@@ -15,6 +15,7 @@ class TopNav extends Component {
                         </Nav>
                         <Nav>
                             <Nav.Link href="/help">Help</Nav.Link>
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
